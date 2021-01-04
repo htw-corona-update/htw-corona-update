@@ -1,5 +1,14 @@
 #!/bin/bash
-for faq in faq-fuer-studierende faq-fuer-bewerber-innen faq-fuer-lehrende faq-fuer-beschaeftigte; do
+
+wget https://www.htw-berlin.de/coronavirus -O coronavirus-index.html
+
+for faq in \
+     faq-fuer-studierende \
+     faq-fuer-bewerber-innen \
+     faq-fuer-lehrende faq-fuer-beschaeftigte \
+     corona-infektionsmeldung-und-nachverfolgung \
+     gebaeude-zugang-mit-karte \
+     ; do
   echo $faq
   wget https://www.htw-berlin.de/coronavirus/$faq/
   if [ $(uname -s) == "Darwin" ]; then
