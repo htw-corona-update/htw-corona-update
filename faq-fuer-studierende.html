@@ -14,15 +14,7 @@ FAQ für Studierende</title>
  <link rel="shortcut icon" href="/templates/htw/images/favicon.ico" type="image/x-icon" />
  <link rel="stylesheet" type="text/css" href="/templates/htw/css/cookieconsent.min.css"/>
  <link rel="stylesheet" type="text/css" href="/templates/htw/css/print.css" media="print"/>
- <script src="/templates/htw/js/modernizr.js">
-</script>
- <script src="/templates/htw/js/cookieconsent.min.js">
-</script>
- <script>
- document.cookie='resolution='+Math.max(screen.width,screen.height)+';path=/'; </script>
- <style type="text/css">
- </style>
-</head>
+ </head>
 <body class="body htw">
  <div class="container">
  <div class="transformer">
@@ -1323,7 +1315,7 @@ Leichte Sprache</a>
 </li>
 </ul>
 </div>
-<div id="fsocial">
+ <div id="fsocial">
  <section id="c3615">
 <div class="socialmedia">
  <a href="http://www.facebook.com/htwberlin" title="Facebook" target="_blank">
@@ -1558,10 +1550,14 @@ Zentrum für berufsbegleitendes und weiterbildendes Studium</a>
 </div>
 </div>
 </div>
-<script src="/templates/htw/js/htw.min.js">
+ <script src="/templates/htw/js/htw.min.js">
+</script>
+ <script src="/templates/htw/js/modernizr.js">
+</script>
+ <script src="/templates/htw/js/cookieconsent.min.js">
 </script>
  <script>
- window.addEventListener("load", function(){ window.cookieconsent.initialise({ "palette": { "popup": { "background": "#000000", "text": "#ffffff" }, "button": { "background": "#76b900", "text": "#ffffff" } }, "position": "top", "static": true, "content": { "message": "Um unsere Webseite für Sie optimal zu gestalten und fortlaufend verbessern zu können, verwenden wir Cookies. Durch die weitere Nutzung der Webseite stimmen Sie der Verwendung von Cookies zu.\n\nWeitere Informationen zu Cookies erhalten Sie in unserer ", "dismiss": "OK", "link": "Datenschutzerklärung", "href": "https://www.htw-berlin.de/datenschutz/" } })}); </script>
+ window.addEventListener("load", function(){ window.cookieconsent.initialise({ "palette": { "popup": { "background": "#000000", "text": "#ffffff" }, "button": { "background": "#76b900", "text": "#ffffff" } }, "position": "top", "static": true, "content": { "message": "Um unsere Webseite für Sie optimal zu gestalten und fortlaufend verbessern zu können, verwenden wir Cookies. Durch die weitere Nutzung der Webseite stimmen Sie der Verwendung von Cookies zu. Weitere Informationen zu Cookies erhalten Sie in unserer", "dismiss": "OK", "link": "Datenschutzerklärung.", "href": "https://www.htw-berlin.de/datenschutz/" }, onInitialise: function (status) { document.cookie='resolution='+Math.max(screen.width,screen.height)+';path=/; SameSite=Lax'; }, onStatusChange: function(status, chosenBefore) { document.cookie='resolution='+Math.max(screen.width,screen.height)+';path=/; SameSite=Lax'; } }) }); </script>
  <div class="dummy" style="display: none;">
 </div>
 
