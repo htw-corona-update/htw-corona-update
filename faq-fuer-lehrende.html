@@ -36,10 +36,12 @@ FAQ für Lehrende</title>
 
   
    
-      <link rel="stylesheet" type="text/css" href="/templates/htw/css/cookieconsent.min.css"/>
+   
+   
+      
+            <link rel="stylesheet" type="text/css" href="/templates/htw/css/ihavecookies.css"/>
 
-   
-   
+         
    
 
 <!--[if lte IE 9]>
@@ -768,6 +770,16 @@ Leichte Sprache</a>
 
    
    
+      <div class="footerline">
+<ul class="cookiesettings">
+<li>
+<a href="https://www.htw-berlin.de/coronavirus/faq-fuer-lehrende/" onclick="$('body').ihavecookies(options, 'reinit'); return false;">
+Datenschutzeinstellungen ändern</a>
+</li>
+</ul>
+</div>
+
+   
 
 <div id="fsocial">
 
@@ -1052,45 +1064,78 @@ Zentrum für berufsbegleitendes und weiterbildendes Studium</a>
 
   
    
-      <script src="/templates/htw/js/cookieconsent.min.js">
+   
+   
+      <script src="/templates/htw/js/jquery.ihavecookies.js">
 </script>
 
       <script>
 
          
-         window.addEventListener("load", function(){
-            window.cookieconsent.initialise({
-               "palette": {
-                  "popup": {
-                     "background": "#000000",
-                     "text": "#ffffff"
-                  },
-                  "button": {
-                     "background": "#76b900",
-                     "text": "#ffffff"
-                  }
-               },
-               "position": "top",
-               "static": true,
-               "content": {
-                  "message": "Um unsere Webseite für Sie optimal zu gestalten und fortlaufend verbessern zu können, verwenden wir Cookies. Durch die weitere Nutzung der Webseite stimmen Sie der Verwendung von Cookies zu. Weitere Informationen zu Cookies erhalten Sie in unsere",
-                  "dismiss": "OK",
-                  "link":    "Datenschutzerklärung.",
-                  "href":    "https://www.htw-berlin.de/datenschutz/"
-               },
-               onInitialise: function (status) {
-                  document.cookie='resolution='+Math.max(screen.width,screen.height)+';path=/; SameSite=Lax';
-               },
-               onStatusChange: function(status, chosenBefore) {
-                  document.cookie='resolution='+Math.max(screen.width,screen.height)+';path=/; SameSite=Lax';
-               }
-            })
+         /* Matomo */
+         var _paq = window._paq = window._paq || [];
+         _paq.push(["setRequestMethod", "POST"]);
+         // _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+         _paq.push(['trackPageView']);
+         _paq.push(['enableLinkTracking']);
+         _paq.push(['setSiteId',"6"]);
+         function selection(myPreferences) {
+            if(jQuery.inArray("analytics", myPreferences)==0) {
+               var u="https://stat.rz.htw-berlin.de/";
+               _paq.push(['setTrackerUrl', u+"htw.php"]);
+               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+               g.type='text/javascript'; g.async=true; g.src=u+"htw.js"; s.parentNode.insertBefore(g,s);
+               console.log('MATOMO Tracking enabled');
+            } else {
+               _paq.push(["disableCookies"]);
+               _paq.push(["deleteCookies"]);
+               console.log('MATOMO Tracking disabled');
+            }
+         }
+
+         /* CookieControl */
+         var options = {
+            title:   "Datenschutzeinstellungen",
+            message: 'Um unsere Webseite für Sie optimal zu gestalten und fortlaufend verbessern zu können, verwenden wir Cookies. Technisch notwendige Cookies sind zwingend für die Funktionalität der Webseite erforderlich. Zusätzliche Statistik-Cookies erlauben es uns, das Nutzungsverhalten anonym auszuwerten, um die Webseite zu verbessern. Sie haben die Möglichkeit, Ihre Datenschutzeinstellungen über einen Link im unteren Seitenbereich jederzeit zu ändern. Weitere Informationen erhalten Sie in unserer&nbsp;<a href="https://www.htw-berlin.de/datenschutz/?noCookies=1">
+Datenschutzerklärung</a>
+.',
+            delay: 600,
+            expires: 30,
+            onAccept: function(){
+               var myPreferences = $.fn.ihavecookies.cookie();
+               document.cookie='resolution='+Math.max(screen.width,screen.height)+';path=/; SameSite=Lax';
+               selection(myPreferences);
+               console.log(myPreferences);
+               location.reload();
+            },
+            cookieTypes:         [{ type: "Statistik-Cookies (Matomo)", value: 'analytics',  description: '' } ],
+            uncheckBoxes:        true,
+            acceptBtnLabel:      "Alle Cookies akzeptieren",
+            cookieTypesTitle:    "Auswahl:",
+            saveBtnLabel:        "Auswahl verwenden",
+            fixedCookieTypeLabel:"Technisch notwendige Cookies",
+            footerMessage:       '<small>
+HTW Berlin&nbsp;-&nbsp;<a href="https://www.htw-berlin.de/impressum/?noCookies=1">
+Impressum</a>
+&nbsp;-&nbsp;<a href="https://www.htw-berlin.de/datenschutz/?noCookies=1">
+Datenschutzerklärung</a>
+</small>
+'
+         }
+
+         $(document).ready(function() {
+            $('body').ihavecookies(options);
+            var myPreferences = $.fn.ihavecookies.cookie();
+            selection(myPreferences);
+            console.log(myPreferences);
+            /* Settings-Button */
+            $('#ihavecookiesBtn').on('click', function(){
+               $('body').ihavecookies(options, 'reinit');
+            });
          });
          
-      </script>
+       </script>
 
-   
-   
    
 
   <div class="dummy" style="display: none;">
